@@ -82,6 +82,8 @@ function isEmpty(value, omitZero) {
       return true;
     case 'symbol':
       return isEmpty(value.description, omitZero);
+    case 'buffer':
+      return value.length === 0;
     default: {
       return true;
     }

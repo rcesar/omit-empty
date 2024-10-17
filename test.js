@@ -168,7 +168,18 @@ describe('omit-empty', () => {
     })
   })
 
-  it('Should not omit prop with symbol value', () => {
+  it('Should not omit prop with symbol value is _id', () => {
+    var arr = new Uint8Array([103,17,107,101,138,173,203,63,148,200,130,216])
+    let a = Buffer.from(arr)
+
+    let b = {as: a}
+
+    assert.deepEqual(omitEmpty(b), {
+      as: a
+    })
+  })
+
+  it('Should omit prop with symbol value in empty', () => {
     let c = undefined
     let a = Symbol(c);
     let b = {as: a, b:2}
