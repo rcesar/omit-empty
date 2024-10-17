@@ -80,6 +80,8 @@ function isEmpty(value, omitZero) {
         }
       }
       return true;
+    case 'symbol':
+      return isEmpty(value.description, omitZero);
     default: {
       return true;
     }

@@ -158,6 +158,26 @@ describe('omit-empty', () => {
     })
   })
 
+  it('Should not omit prop with symbol value', () => {
+    let a = Symbol('a');
+    let b = {as: a, b:2}
+
+    assert.deepEqual(omitEmpty(b), {
+      as: a,
+      b: 2
+    })
+  })
+
+  it('Should not omit prop with symbol value', () => {
+    let c = undefined
+    let a = Symbol(c);
+    let b = {as: a, b:2}
+
+    assert.deepEqual(omitEmpty(b), {
+      b: 2
+    })
+  })
+
   it('Should omit symbol when value is empty', () => {
     let a = Symbol('a');
     let b = {[a]: undefined, b:2}
